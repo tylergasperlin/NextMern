@@ -1,6 +1,6 @@
 exports.register =  (req, res) => {
     res.json({
-        data: 'hit you register endpoint4'
+        data: 'hit you register endpoint5'
     })
 }
 
