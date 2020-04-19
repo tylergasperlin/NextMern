@@ -28,21 +28,21 @@ const Layout = ({ children }) => {
         <ul className='nav nav-tabs bg-dark'>
             <li className='nav-item'>
                 <Link href="/">
-                    <a className='nav-link' text-light>
+                    <a className='nav-link' >
                         Home
                     </a>
                 </Link>
             </li>
             <li className='nav-item'>
                 <Link href='/login'>
-                    <a className='nav-link' text-light>
+                    <a className='nav-link'>
                         Login
                     </a>
                 </Link>
             </li>
             <li className='nav-item'>
                 <Link href='/register'>
-                    <a className='nav-link' text-light>
+                    <a className='nav-link' >
                         Register
                     </a>
                 </Link>

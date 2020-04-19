@@ -1,33 +1,82 @@
-import Layout from '../components/Layout'
+import Layout from '../components/Layout';
+import { useState } from 'react';
 
 const Register = () => {
+    const [state, setState] = useState({
+        name: '',
+        email: '',
+        password: '',
+        error: '',
+        success: '',
+        buttontext: 'Register',
+    });
+
+    const { name, email, password, error, success, buttontext } = state;
+
+    const handleChange = (name) => (e) => {
+        
+        setState({
+            ...state,
+            [name]: e.target.value,
+            error: '',
+            success: '',
+            buttontext: 'Register',
+        });
+    };
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log({name, email, password})
+    };
+
     const RegisterForm = () => {
         return (
-            <form>
-                <div className="form-group">
-                    <input type="text" className="form-control" placeholder="Type your name"/>
+            <form onSubmit={handleSubmit}>
+                <div className='form-group'>
+                    <input
+                        value={name}
+                        onChange={handleChange('name')}
+                        type='text'
+                        className='form-control'
+                        placeholder='Type your name'
+                    />
                 </div>
-                <div className="form-group">
-                    <input type="email" className="form-control" placeholder="Type your email"/>
+                <div className='form-group'>
+                    <input
+                        value={email}
+                        onChange={handleChange('email')}
+                        type='email'
+                        className='form-control'
+                        placeholder='Type your email'
+                    />
                 </div>
-                <div className="form-group">
-                    <input type="password" className="form-control" placeholder="Type your password"/>
+                <div className='form-group'>
+                    <input
+                        value={password}
+                        onChange={handleChange('password')}
+                        type='password'
+                        className='form-control'
+                        placeholder='Type your password'
+                    />
                 </div>
-                <div className="form-group">
-                    <button className="btn btn-outline-dark">Register</button>
+                <div className='form-group'>
+                    <button className='btn btn-outline-dark'>{buttontext}</button>
                 </div>
             </form>
-        )
+        );
+    };
 
-    }
-
-    return <Layout>
-        <div className="col-md-6 offset-md-3">
-            <h1>Register</h1>
-            <br/>
-            <RegisterForm/>
-        </div>
-    </Layout>
-}
+    return (
+        <Layout>
+            <div className='col-md-6 offset-md-3'>
+                <h1>Register</h1>
+                <br />
+                {RegisterForm()}
+                <br/>
+                {JSON.stringify(state)}
+            </div>
+        </Layout>
+    );
+};
 
 export default Register;
