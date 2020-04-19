@@ -1,14 +1,24 @@
 import Head from 'next/head';
 import Link from 'next/link'
+import NProgress from 'nprogress'
+import Router from 'next/router'
+
+Router.onRouteChangeStart = url => NProgress.start()
+Router.onRouteChangeComplete = url => NProgress.done()
+Router.onRouteChangeError = url => NProgress.done()
 
 const Layout = ({ children }) => {
     const head = () => (
-        <link
-            rel='stylesheet'
-            href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
-            integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm'
-            crossorigin='anonymous'
-        />
+        <React.Fragment>
+            <link
+                rel='stylesheet'
+                href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+                integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm'
+                crossOrigin='anonymous'
+            />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"/>
+        </React.Fragment>
+
     );
 
     const nav = () => (
