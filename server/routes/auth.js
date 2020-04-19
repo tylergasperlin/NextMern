@@ -1,13 +1,9 @@
 const express = require('express');
 const router = express.Router()
 
+// import from controllers
+const {register } = require('../controllers/auth')
 
-
-router.get('/register', (req, res) => {
-    res.json({
-        data: 'hit you register endpoint3'
-    })
-})
-
+router.get('/register', register)
 
 module.exports = router;
