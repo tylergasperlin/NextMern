@@ -56,7 +56,7 @@ userSchema.virtual('password')
     })
     
 //meethods
-userSchema.methods({
+userSchema.methods = {
     authenticate: function(plainText) {
         return this.encryptPassword(plainText) === this.hashed_password;
     },
@@ -75,7 +75,7 @@ userSchema.methods({
     makeSalt: function() {
         return Math.round(new Date().valueOf * Math.random()) + '';
     }
-})
+}
 
 
 // export user module
