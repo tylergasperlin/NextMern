@@ -58,6 +58,7 @@ const Register = () => {
                         type='text'
                         className='form-control'
                         placeholder='Type your name'
+                        required
                     />
                 </div>
                 <div className='form-group'>
@@ -67,6 +68,7 @@ const Register = () => {
                         type='email'
                         className='form-control'
                         placeholder='Type your email'
+                        required
                     />
                 </div>
                 <div className='form-group'>
@@ -76,6 +78,7 @@ const Register = () => {
                         type='password'
                         className='form-control'
                         placeholder='Type your password'
+                        required
                     />
                 </div>
                 <div className='form-group'>
