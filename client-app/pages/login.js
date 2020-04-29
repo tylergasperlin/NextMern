@@ -5,7 +5,7 @@ import {showSuccessMessage, showErrorMessage} from '../helpers/alerts';
 import { API } from '../config';
 import Link from 'next/link';
 import Router from 'next/router'
-import {authenticate} from '../helpers/auth'
+import {authenticate, isAuth} from '../helpers/auth'
 const Login = () => {
     const [state, setState] = useState({
         email: 'moseu@gmail.com',
@@ -28,6 +28,10 @@ const Login = () => {
         });
     };
 
+    useEffect(() => {
+        isAuth() && Router.push('/')
+    }, [])
+
     const handleSubmit = async e => {
         e.preventDefault();
         setState({...state, buttontext: 'Logging in'})
@@ -35,9 +39,7 @@ const Login = () => {
             const response = await axios.post(`${API}/login`, {
                 email, password
             })
-            authenticate(response, () => {
-                Router.push('/')
-            })
+            authenticate(response, () => isAuth() && isAuth().role === 'admin' ? Router.push('/admin') : Router.push('/user'));
         } catch(error) {
             console.log(error)
             setState({...state, buttonText: 'Login', error: error.response.data.error})
