@@ -5,7 +5,7 @@ import {showSuccessMessage, showErrorMessage} from '../helpers/alerts';
 import { API } from '../config';
 import Link from 'next/link';
 import Router from 'next/router'
-
+import {authenticate} from '../helpers/auth'
 const Login = () => {
     const [state, setState] = useState({
         email: 'moseu@gmail.com',
@@ -35,7 +35,9 @@ const Login = () => {
             const response = await axios.post(`${API}/login`, {
                 email, password
             })
-            console.log(response)
+            authenticate(response, () => {
+                Router.push('/')
+            })
         } catch(error) {
             console.log(error)
             setState({...state, buttonText: 'Login', error: error.response.data.error})
