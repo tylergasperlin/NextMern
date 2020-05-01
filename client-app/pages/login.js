@@ -8,8 +8,8 @@ import Router from 'next/router'
 import {authenticate, isAuth} from '../helpers/auth'
 const Login = () => {
     const [state, setState] = useState({
-        email: 'moseu@gmail.com',
-        password: 'asfasfw',
+        email: 'gasperlint@gmail.com',
+        password: 'gmail.com',
         error: '',
         success: '',
         buttontext: 'Login',
