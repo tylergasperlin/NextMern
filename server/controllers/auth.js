@@ -3,7 +3,7 @@ const AWS = require('aws-sdk');
 const jwt = require('jsonwebtoken');
 const { registerEmailParams} = require('../helpers/email')
 const shortId = require('shortId')
-
+const expressJwt = require('express-jwt')
 
 AWS.config.update({
     accessKeyId: process.env.AWS_SECRET_ACCESSS_KEY,
@@ -115,3 +115,5 @@ exports.login = (req, res) => {
     })
 }
 
+
+exports.requireSignin = expressJwt({secret: process.env.JWT_SECRET})
